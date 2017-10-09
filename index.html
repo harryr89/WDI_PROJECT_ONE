@@ -2,11 +2,39 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>wdi project one</title>
-    <script src="js/app.js" charset="utf-8"></script>
+    <link rel="reset.css/reset.css" href="reset.css">
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" charset="utf-8"></script>
+    <script src="js/app.js" charset="utf-8"></script>
+  <link href="https://fonts.googleapis.com/css?family=Gochi+Hand" rel="stylesheet">
+    <title>Spot on</title>
   </head>
   <body>
-<h1>WDI</h1>
+    <header>
+      <h1>Spot on</h1>
+    </header>
+    <main>
+      <div id="score">
+      </div>
+      <div>
+        <ul>
+          <li id="choice-1" class='choice'>1</li>
+          <li id="choice-2" class='choice'>2</li>
+          <li id="choice-3" class='choice'>3</li>
+          <li id="choice-4" class='choice'>4</li>
+          <li id="choice-5" class='choice'>5</li>
+          <li id="choice-6" class='choice'>6</li>
+          <li id="choice-7" class='choice'>7</li>
+          <li id="choice-8" class='choice'>8</li>
+          <li id="choice-9" class='choice'>9</li>
+        </ul>
+      </div>
+      <div>
+        <span id="result">Player 1 Wins!</span>
+      </div>
+      <div>
+        <button type="button" name="reset" id="reset">Reset</button>
+      </div>
+    </main>
   </body>
 </html>
