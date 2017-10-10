@@ -23,7 +23,7 @@ console.log('pickRandomSquare');  pickRandomSquare(console.log('argument'));
 }
 
 console.log('function pickRandomSquare'); function pickRandomSquare() {
-  console.log('selectedSquare'); let selectedSquare = $lis[Math.floor(Math.random()*$lis.length)];
+  console.log('selectedSquare'); let selectedSquare = $lis[Math.floor(Math.random()*$lis.length)]; console.log(selectedSquare);
 
   console.log('passing random number to addSpotToSelectedSquare'); addSpotToSelectedSquare(selectedSquare);
   console.log('checked one');
@@ -31,7 +31,7 @@ console.log('function pickRandomSquare'); function pickRandomSquare() {
 
 console.log('function addSpot'); function addSpotToSelectedSquare(square) {
 
-  console.log('apply blue color'); $(square).addClass('selected').on('click', function(){
+  console.log('apply blue color'); console.log(square); $(square).addClass('selected').on('click', function(){
   console.log('checked two');
 
 //begin another interation point to pickRandomSquare
@@ -48,8 +48,9 @@ console.log('function addSpot'); function addSpotToSelectedSquare(square) {
     console.log('called pickRandomSquare'); pickRandomSquare();
 
     //reduce timer by 100 every five iterations. pass add spot to selectedSquare
+    //let timeReduction = 3000 - $lis++ + 100;
 
-  }, 3000 /* ($(square) - 100)*/);
+  }, 2000 /* ($(square) - 100)*/);
     console.log('pause');
   //take X iteration of square and reudce by reduction const
 }
