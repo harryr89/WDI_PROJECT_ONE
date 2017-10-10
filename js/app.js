@@ -24,7 +24,7 @@ console.log('pickRandomSquare');  pickRandomSquare(console.log('argument'));
 
 console.log('function pickRandomSquare'); function pickRandomSquare() {
   console.log('selectedSquare'); let selectedSquare = $lis[Math.floor(Math.random()*$lis.length)];
-  
+
   console.log('passing random number to addSpotToSelectedSquare'); addSpotToSelectedSquare(selectedSquare);
   console.log('checked one');
 }
