@@ -47,6 +47,12 @@ li {
 }
 
 .gameStart {
-  margin: auto;
-  text-align: center;
+  position: fixed;
+  background: green;
+  height: 100vh;
+  width: 100%;
 }
+
+/*.gameStartOne {
+  display: none;
+}*/

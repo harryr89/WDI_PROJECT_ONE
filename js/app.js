@@ -16,17 +16,23 @@ let time = 2000;
 let lives = 3; //if this gets to zero the game will end
 let $lis; //the specific ids of each square
 let clickIsSuccessful = false;
+let $startGameButton;
+let $divStartGame;
+let $divResetGame;
 
 function setup() {
   $lis = $('li');
+  $startGameButton = $('button')[0];
+  $divStartGame = $('.gameStart');
+  console.log($divStartGame);
   // only run this function when user clicks on START
-  pickRandomSquare();
+  $($startGameButton).on('click', () => {
+    $divStartGame.css('display', 'none');
+    setTimeout(function(){
+      pickRandomSquare();
+    }, 2000);
+  });
 }
-$(document).ready(function(){
-    $("button").click(function(){
-        $("h1").hide(1000);
-    });
-});
 //provides a random number (selectedSquare) that is passed for a calss to be added
 function pickRandomSquare() {
   let selectedSquare = $lis[Math.floor(Math.random()*$lis.length)];
