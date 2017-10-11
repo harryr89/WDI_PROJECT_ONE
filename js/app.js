@@ -10,52 +10,59 @@
 
 // once dom has been fully loaded, execute the setup function.
 $(setup);
-  console.log('1');
+
+let score = 0;
+
+let lives = 3;
 let $lis;
-  console.log('2');
+let clickIsSuccessful = false;
+
 function setup() {
-  console.log('3');
   $lis = $('li');
-  console.log('4');
-
-console.log('pickRandomSquare');  pickRandomSquare(console.log('argument'));
-  console.log('check first');
+  pickRandomSquare();
 }
 
-console.log('function pickRandomSquare'); function pickRandomSquare() {
-  console.log('selectedSquare'); let selectedSquare = $lis[Math.floor(Math.random()*$lis.length)]; console.log(selectedSquare);
-
-  console.log('passing random number to addSpotToSelectedSquare'); addSpotToSelectedSquare(selectedSquare);
-  console.log('checked one');
+function pickRandomSquare() {
+  let selectedSquare = $lis[Math.floor(Math.random()*$lis.length)];
+  addSpotToSelectedSquare(selectedSquare);
 }
 
-console.log('function addSpot'); function addSpotToSelectedSquare(square) {
+function addSpotToSelectedSquare(square) {
+  //take X iteration of square and reudce by reduction const
 
-  console.log('apply blue color'); console.log(square); $(square).addClass('selected').on('click', function(){
-  console.log('checked two');
+  $(square).addClass('selected');
 
-//begin another interation point to pickRandomSquare
-
+  $('.selected').one('click', function(){
+    //begin another interation point to pickRandomSquare
+    score++;
+    clickIsSuccessful = true;
+    console.log(score + 'im the score!');
   });
-  // click
 
-  console.log('function setTimeout'); setTimeout(function() {
-    console.log('11');
-    $(square).removeClass("selected");
-    console.log('12');
+  setTimeout(function() {
 
+
+    $(square).removeClass('selected').off('click');
+
+    if (!clickIsSuccessful) {
+      lives--;
+      console.log(lives + 'im the lives');
+      if (lives === 0) {
+        console.log('game over');
+      }
+    } else {
+      clickIsSuccessful = false;
+    }
     //called for a loop
-    console.log('called pickRandomSquare'); pickRandomSquare();
-
+    pickRandomSquare();
     //reduce timer by 100 every five iterations. pass add spot to selectedSquare
     //let timeReduction = 3000 - $lis++ + 100;
-
   }, 2000 /* ($(square) - 100)*/);
-    console.log('pause');
-  //take X iteration of square and reudce by reduction const
 }
 
 //test function
-console.log('function test'); function test (){
+function test (){
+
   console.log('hello');
+
 }
