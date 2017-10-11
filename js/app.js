@@ -11,52 +11,48 @@
 // once dom has been fully loaded, execute the setup function.
 $(setup);
 
-let score = 0;
+let score = 0; //this will increment as the player is advarncing
 
-let lives = 3;
-let $lis;
+let lives = 3; //if this gets to zero the game will end
+let $lis; //the specific ids of each square
 let clickIsSuccessful = false;
 
 function setup() {
   $lis = $('li');
   pickRandomSquare();
 }
-
+//provides a random number (selectedSquare) that is passed for a calss to be added
 function pickRandomSquare() {
   let selectedSquare = $lis[Math.floor(Math.random()*$lis.length)];
   addSpotToSelectedSquare(selectedSquare);
 }
-
+//changing the color of the selected square as chosen by by the random function
 function addSpotToSelectedSquare(square) {
-  //take X iteration of square and reudce by reduction const
 
-  $(square).addClass('selected');
+  $(square).addClass('selected'); //adding the class selected to the random square
 
-  $('.selected').one('click', function(){
-    //begin another interation point to pickRandomSquare
-    score++;
-    clickIsSuccessful = true;
+  $('.selected').one('click', function(){ //listening for a click and limiting it to one
+    score++; //incrementing score if click has been heard
+    clickIsSuccessful = true; //take that click and console log it
     console.log(score + 'im the score!');
   });
-
+  //included in addSpotToSelectedSquare
   setTimeout(function() {
 
+    $(square).removeClass('selected').off('click'); //removing the past added class
 
-    $(square).removeClass('selected').off('click');
-
-    if (!clickIsSuccessful) {
-      lives--;
+    if (!clickIsSuccessful) { //as the class gets removed, take the result of click listened and act accordingly
+      lives--; //take away a life, it begins with three
       console.log(lives + 'im the lives');
-      if (lives === 0) {
+      if (lives === 0) { //once they are at zero end the game
         console.log('game over');
       }
     } else {
-      clickIsSuccessful = false;
+      clickIsSuccessful = false; //if click has been obtained
     }
     //called for a loop
     pickRandomSquare();
-    //reduce timer by 100 every five iterations. pass add spot to selectedSquare
-    //let timeReduction = 3000 - $lis++ + 100;
+    
   }, 2000 /* ($(square) - 100)*/);
 }
 
