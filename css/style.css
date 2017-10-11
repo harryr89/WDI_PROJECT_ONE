@@ -45,3 +45,8 @@ li {
 .selected {
   background: blue;
 }
+
+.gameStart {
+  margin: auto;
+  text-align: center;
+}
