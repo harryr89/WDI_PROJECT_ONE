@@ -21,6 +21,7 @@ let $divStartGame;
 let $divResetButton;
 let $score;
 let $lives;
+let startGame;
 
 function setup() {
   $lis = $('li');
@@ -30,12 +31,15 @@ function setup() {
   $score = $('#score');
   $lives = $('#lives');
   // only run this function when user clicks on START
-  $($startGameButton).on('click', () => {
-    $divStartGame.css('display', 'none');
-    setTimeout(function(){
-      pickRandomSquare();
-    }, 2000);
-  });
+  $($startGameButton).on('click', playGame);
+}
+function playGame() {
+  $('.gameOver').hide();
+  $divStartGame.css('display', 'none');
+  $('ul').show();
+  setTimeout(function(){
+    pickRandomSquare();
+  }, 2000);
 }
 //provides a random number (selectedSquare) that is passed for a calss to be added
 function pickRandomSquare() {
@@ -60,8 +64,8 @@ function pickRandomSquare() {
 function addSpotToSelectedSquare(square) {
 
   $(square).addClass('selected'); //adding the class selected to the random square
-
-  $('.selected').one('click', function(){ //listening for a click and limiting it to one
+  $('.selected').on('click', function(){
+    console.log('clicking'); //listening for a click and limiting it to one
     score++; //incrementing score if click has been heard
     $($score).html(score);// CHANGE THE HTML OF THE ELEMENT WITH ID OF SCORE
     time -= 20;
@@ -69,7 +73,7 @@ function addSpotToSelectedSquare(square) {
     console.log(score + 'im the score!');
   });
   //included in addSpotToSelectedSquare
-  const startGame = setTimeout(function() {
+  startGame = setTimeout(function() {
 
     $(square).removeClass('selected').off('click'); //removing the past added class
 
@@ -77,7 +81,8 @@ function addSpotToSelectedSquare(square) {
       lives--; //take away a life, it begins with three
       $($lives).html(lives);// CHANGE THE HTML OF THE ELEMENT WITH ID OF LIVES
       if (lives === 0) { //once they are at zero end the game
-        clearTimeout(startGame);
+        // $('#choices').hide();
+        gameOver();
         return;
       }
     } else clickIsSuccessful = false; //if click has been obtained
@@ -87,6 +92,22 @@ function addSpotToSelectedSquare(square) {
   }, time /* ($(square) - 100)*/);
 }
 
+function gameOver() {
+  console.log('running');
+  clearTimeout(startGame);
+  $('.gameOver').show();
+  $('.gameOver').on('click', reset);
+}
+
+
+function reset(){
+  score = 0;
+  $($score).html(score);
+  lives = 3;
+  $($lives).html(lives);
+
+  playGame();
+}
 
 //test function
 // function test (){

@@ -28,7 +28,7 @@ ul {
   width: 300px;
   height: 400px;
   position: relative;
-  z-index: -1;
+  display: none;
 }
 
 li {
@@ -60,11 +60,15 @@ li {
 }
 
 .gameOver {
-  background-color: rgba(255,255,255, 0.5);
+  background-color: red;
   position: absolute;
-  width: 100%;
+  margin: 0 auto;
+  width: 300px;
   height: 300px;
   display: none;
+  z-index: 5;
+  left: 50%;
+  transform: translate(-50%, 0);
 }
 
 h2 {
