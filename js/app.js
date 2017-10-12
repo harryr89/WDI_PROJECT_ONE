@@ -64,7 +64,7 @@ function pickRandomSquare() {
 function addSpotToSelectedSquare(square) {
 
   $(square).addClass('selected'); //adding the class selected to the random square
-  $('.selected').on('click', function(){
+  $('.selected').one('click', function(){
     console.log('clicking'); //listening for a click and limiting it to one
     score++; //incrementing score if click has been heard
     $($score).html(score);// CHANGE THE HTML OF THE ELEMENT WITH ID OF SCORE
