@@ -19,13 +19,16 @@ let clickIsSuccessful = false;
 let $startGameButton;
 let $divStartGame;
 let $divResetButton;
+let $score;
+let $lives;
 
 function setup() {
   $lis = $('li');
   $startGameButton = $('button')[0];
   $divStartGame = $('.gameStart');
-  $divResetButton = $('button');
-  console.log($divStartGame);
+  $divResetButton = $('#reset');
+  $score = $('#score');
+  $lives = $('#lives');
   // only run this function when user clicks on START
   $($startGameButton).on('click', () => {
     $divStartGame.css('display', 'none');
@@ -40,45 +43,46 @@ function pickRandomSquare() {
   addSpotToSelectedSquare(selectedSquare);
 
 }
-function updateScore(){
-
-if($('.selected')&& clickIsSuccessful === true)  {
- score ++
- console.log('i just scored' + score)
-}
-if (!clickIsSuccessful)  {
-  time -10
-  lives --
-  console.log('i just lost a life' + lives)
-  console.log(time);
-}
-}
+// function updateScore(){
+//
+// if($('.selected')&& clickIsSuccessful === true)  {
+//  score ++
+//  console.log('i just scored' + score);
+// }
+// if (!clickIsSuccessful)  {
+//   time -200
+//   lives --
+//   console.log('i just lost a life' + lives)
+//   console.log(time);
+// }
+// }
 //changing the color of the selected square as chosen by by the random function
 function addSpotToSelectedSquare(square) {
 
   $(square).addClass('selected'); //adding the class selected to the random square
 
-  $('.selected').one('click', function(){
-    clickIsSuccessful = true
-});
+  $('.selected').one('click', function(){ //listening for a click and limiting it to one
+    score++; //incrementing score if click has been heard
+    $($score).html(score);// CHANGE THE HTML OF THE ELEMENT WITH ID OF SCORE
+    time -= 20;
+    clickIsSuccessful = true;
+    console.log(score + 'im the score!');
+  });
   //included in addSpotToSelectedSquare
   const startGame = setTimeout(function() {
 
     $(square).removeClass('selected').off('click'); //removing the past added class
 
-    // if (!clickIsSuccessful) { //as the class gets removed, take the result of click listened and act accordingly
-    //   lives--; //take away a life, it begins with three
-    //   console.log(lives + 'im the lives');
-    //   if (lives === 0) { //once they are at zero end the game
-    //     console.log('game over');
-    //     clearTimeout(startGame);
-    //     return;
-    //   }
-    // } else {
-    //   clickIsSuccessful = false; //if click has been obtained
-    // }
-      pickRandomSquare();
-      //called for a loop
+    if (!clickIsSuccessful) { //as the class gets removed, take the result of click listened and act accordingly (we can also write that as (clickIsSuccessful === false))
+      lives--; //take away a life, it begins with three
+      $($lives).html(lives);// CHANGE THE HTML OF THE ELEMENT WITH ID OF LIVES
+      if (lives === 0) { //once they are at zero end the game
+        clearTimeout(startGame);
+        return;
+      }
+    } else clickIsSuccessful = false; //if click has been obtained
+    pickRandomSquare();
+    //called for a loop
 
   }, time /* ($(square) - 100)*/);
 }

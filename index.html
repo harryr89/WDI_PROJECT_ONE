@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link rel="css/reset.css" href="css.reset.css">
+    <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" charset="utf-8"></script>
     <script src="js/app.js" charset="utf-8"></script>
@@ -17,23 +17,26 @@
       <h1>Spot on</h1>
     </header>
     <main>
-      <div id="score">
       </div>
       <div id="choices">
         <ul>
-          <li id="choice-1" class='choice'>1</li>
-          <li id="choice-2" class='choice'>2</li>
-          <li id="choice-3" class='choice'>3</li>
-          <li id="choice-4" class='choice'>4</li>
-          <li id="choice-5" class='choice'>5</li>
-          <li id="choice-6" class='choice'>6</li>
-          <li id="choice-7" class='choice'>7</li>
-          <li id="choice-8" class='choice'>8</li>
-          <li id="choice-9" class='choice'>9</li>
+          <div class="gameOver">
+            <h2>GAME OVER</h2>
+          </div>
+          <li id="choice-1" class='choice'></li>
+          <li id="choice-2" class='choice'></li>
+          <li id="choice-3" class='choice'></li>
+          <li id="choice-4" class='choice'></li>
+          <li id="choice-5" class='choice'></li>
+          <li id="choice-6" class='choice'></li>
+          <li id="choice-7" class='choice'></li>
+          <li id="choice-8" class='choice'></li>
+          <li id="choice-9" class='choice'></li>
         </ul>
       </div>
-      <div>
-        <span id="result">Player 1 Wins!</span>
+      <div class="score-box">
+        <p>Lives <span id="lives">3</span></p>
+        <p>Score <span id="score">0</span></p>
       </div>
       <div class="gameReset">
         <button type="button" name="reset" id="reset">Reset</button>
