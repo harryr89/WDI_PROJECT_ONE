@@ -49,19 +49,6 @@ function pickRandomSquare() {
   addSpotToSelectedSquare(selectedSquare);
 
 }
-// function updateScore(){
-//
-// if($('.selected')&& clickIsSuccessful === true)  {
-//  score ++
-//  console.log('i just scored' + score);
-// }
-// if (!clickIsSuccessful)  {
-//   time -200
-//   lives --
-//   console.log('i just lost a life' + lives)
-//   console.log(time);
-// }
-// }
 //changing the color of the selected square as chosen by by the random function
 function addSpotToSelectedSquare(square) {
 
@@ -70,7 +57,7 @@ function addSpotToSelectedSquare(square) {
     console.log('clicking'); //listening for a click and limiting it to one
     score++; //incrementing score if click has been heard
     $($score).html(score);// CHANGE THE HTML OF THE ELEMENT WITH ID OF SCORE
-    time -= 20;
+    time -= 10;
     clickIsSuccessful = true;
     console.log(score + 'im the score!');
   });
