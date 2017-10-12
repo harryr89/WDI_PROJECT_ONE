@@ -18,12 +18,13 @@ let $lis; //the specific ids of each square
 let clickIsSuccessful = false;
 let $startGameButton;
 let $divStartGame;
-let $divResetGame;
+let $divResetButton;
 
 function setup() {
   $lis = $('li');
   $startGameButton = $('button')[0];
   $divStartGame = $('.gameStart');
+  $divResetButton = $('button');
   console.log($divStartGame);
   // only run this function when user clicks on START
   $($startGameButton).on('click', () => {
@@ -37,44 +38,55 @@ function setup() {
 function pickRandomSquare() {
   let selectedSquare = $lis[Math.floor(Math.random()*$lis.length)];
   addSpotToSelectedSquare(selectedSquare);
+
+}
+function updateScore(){
+
+if($('.selected')&& clickIsSuccessful === true)  {
+ score ++
+ console.log('i just scored' + score)
+}
+if (!clickIsSuccessful)  {
+  time -10
+  lives --
+  console.log('i just lost a life' + lives)
+  console.log(time);
+}
 }
 //changing the color of the selected square as chosen by by the random function
 function addSpotToSelectedSquare(square) {
 
   $(square).addClass('selected'); //adding the class selected to the random square
 
-  $('.selected').one('click', function(){ //listening for a click and limiting it to one
-    score++; //incrementing score if click has been heard
-    time -= 100;
-    console.log(time);
-    console.log(score + 'im the score!');
-  });
+  $('.selected').one('click', function(){
+    clickIsSuccessful = true
+});
   //included in addSpotToSelectedSquare
   const startGame = setTimeout(function() {
 
     $(square).removeClass('selected').off('click'); //removing the past added class
 
-    if (!clickIsSuccessful) { //as the class gets removed, take the result of click listened and act accordingly
-      lives--; //take away a life, it begins with three
-      console.log(lives + 'im the lives');
-      if (lives === 0) { //once they are at zero end the game
-        console.log('game over');
-        clearTimeout(startGame);
-        return;
-      }
-
-    } else {
-      clickIsSuccessful = false; //if click has been obtained
-    }
-    pickRandomSquare();
-    //called for a loop
+    // if (!clickIsSuccessful) { //as the class gets removed, take the result of click listened and act accordingly
+    //   lives--; //take away a life, it begins with three
+    //   console.log(lives + 'im the lives');
+    //   if (lives === 0) { //once they are at zero end the game
+    //     console.log('game over');
+    //     clearTimeout(startGame);
+    //     return;
+    //   }
+    // } else {
+    //   clickIsSuccessful = false; //if click has been obtained
+    // }
+      pickRandomSquare();
+      //called for a loop
 
   }, time /* ($(square) - 100)*/);
 }
 
+
 //test function
-function test (){
-
-  console.log('hello');
-
-}
+// function test (){
+//
+//   console.log('hello');
+//
+// }
