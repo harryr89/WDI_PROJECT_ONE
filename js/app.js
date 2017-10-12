@@ -12,7 +12,7 @@
 $(setup);
 
 let score = 0; //this will increment as the player is advarncing
-let time = 2000;
+let time = 1500;
 let lives = 3; //if this gets to zero the game will end
 let $lis; //the specific ids of each square
 let clickIsSuccessful = false;
@@ -108,7 +108,7 @@ function reset(){
   lives = 3;
   $($lives).html(lives);
   $(square).removeClass('selected');
-  
+
   setup();
 }
 
