@@ -30,8 +30,10 @@ function setup() {
   $divResetButton = $('#reset');
   $score = $('#score');
   $lives = $('#lives');
+
   // only run this function when user clicks on START
   $($startGameButton).on('click', playGame);
+  $('.gameOver').on('click', playGame)
 }
 function playGame() {
   $('.gameOver').hide();
@@ -96,7 +98,7 @@ function gameOver() {
   console.log('running');
   clearTimeout(startGame);
   $('.gameOver').show();
-  $('.gameOver').on('click', reset);
+  reset()
 }
 
 
@@ -105,8 +107,9 @@ function reset(){
   $($score).html(score);
   lives = 3;
   $($lives).html(lives);
-
-  playGame();
+  $(square).removeClass('selected');
+  
+  setup();
 }
 
 //test function

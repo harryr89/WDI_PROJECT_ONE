@@ -1,7 +1,11 @@
 body {
-  background: yellow;
+  background-image: url(../images/psychdelic-design-on-t-shirt_shutterstock_3198323.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   text-align: center;
   font-family: 'Gochi Hand', cursive;
+  height: 100vh;
 
 }
 
@@ -24,8 +28,8 @@ button {
 
 ul {
   margin: 10px auto;
-  width: 300px;
-  height: 300px;
+  width: 500px;
+  height: 500px;
   position: relative;
   display: none;
 }
@@ -36,7 +40,7 @@ li {
   margin: 1px;
   height: 98px;
   line-height: 98px;
-  background: black;
+  background: white;
   color: white;
   list-style: none;
   text-align: center;
@@ -49,7 +53,7 @@ li {
 
 .gameStart {
   position: fixed;
-  background: yellow;
+  background-color: yellow;
   height: 100vh;
   width: 100%;
 }
@@ -59,11 +63,15 @@ li {
 }
 
 .gameOver {
-  background-color: pink;
+  /*background-color: pink;*/
+  background-image: url(../images/gameover.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   position: absolute;
   margin: 0 auto;
-  width: 300px;
-  height: 300px;
+  width: 500px;
+  height: 500px;
   display: none;
   z-index: 5;
   left: 50%;
@@ -71,6 +79,8 @@ li {
 }
 
 h2 {
+  color: white;
+  font-size: 500%;
   position: absolute;
   top: 50%;
   left: 50%;
