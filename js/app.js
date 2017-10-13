@@ -22,6 +22,7 @@ let $divResetButton;
 let $score;
 let $lives;
 let startGame;
+let pickRandomSquareTimeout;
 
 function setup() {
   $lis = $('li');
@@ -39,7 +40,7 @@ function playGame() {
   $('.gameOver').hide();
   $divStartGame.css('display', 'none');
   $('ul').show();
-  setTimeout(function(){
+  pickRandomSquareTimeout = setTimeout(function(){
     pickRandomSquare();
   }, 2000);
 }
@@ -84,8 +85,9 @@ function addSpotToSelectedSquare(square) {
 function gameOver() {
   console.log('running');
   clearTimeout(startGame);
+  clearTimeout(pickRandomSquareTimeout);
   $('.gameOver').show();
-  reset()
+  reset();
 }
 
 

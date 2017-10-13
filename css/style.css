@@ -11,19 +11,38 @@ body {
 
 h1 {
   font-size: 50px;
-  margin:20px;
+  padding: 20px;
 }
 
 span {
   padding: 10px;
   font-size: 40px;
-
 }
 
 button {
   margin-top: 20px;
   font-family: 'Gochi Hand', cursive;
   font-size: 40px;
+}
+
+.gameStart button {
+  padding: 20px 30px;
+  margin-top: 45%;
+  border: solid 4px black;
+  transform: translateY(-50%);
+  background-color: white;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+button:hover {
+  cursor: pointer;
+  background-image: url('../images/psychdelic-design-on-t-shirt_shutterstock_3198323.png');
+}
+
+button:focus {
+  outline: none;
 }
 
 ul {
@@ -56,7 +75,7 @@ li {
   background-image: url(../images/front.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;);
+  background-position: center;
   height: 100vh;
   width: 100%;
 }
